@@ -2,69 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Gaming Website</title>
+  <title>Shooting Game</title>
   <style>
     body {
-      background-color: #111;
+      background: #111;
       color: #eee;
       font-family: Arial, sans-serif;
       text-align: center;
+      margin: 0;
+      overflow: hidden;
     }
-    header {
+    #gameArea {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
       background: #222;
-      padding: 20px;
-      font-size: 2em;
+    }
+    .target {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: red;
+      border-radius: 50%;
+      cursor: crosshair;
+    }
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 20px;
       color: #00ffcc;
-    }
-    nav a {
-      margin: 0 15px;
-      color: #00ffcc;
-      text-decoration: none;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .game-box {
-      margin: 30px auto;
-      padding: 20px;
-      background: #333;
-      border-radius: 10px;
-      width: 60%;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 10px;
-      background: #222;
-      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <header>🎮 Welcome to My Gaming Hub 🎮</header>
-  <nav>
-    <a href="#games">Games</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div id="gameArea">
+    <div id="score">Score: 0</div>
+  </div>
 
-  <section id="games" class="game-box">
-    <h2>Featured Game</h2>
-    <p>Play fun browser games here!</p>
-    <!-- Example: Embed a free game -->
-    <iframe src="https://games.crazygames.com/en_US/space-blaster/index.html" 
-            width="600" height="400" frameborder="0"></iframe>
-  </section>
+  <script>
+    const gameArea = document.getElementById("gameArea");
+    const scoreDisplay = document.getElementById("score");
+    let score = 0;
 
-  <section id="about" class="game-box">
-    <h2>About</h2>
-    <p>This is my free gaming website where I share cool browser games.</p>
-  </section>
+    function createTarget() {
+      const target = document.createElement("div");
+      target.classList.add("target");
 
-  <section id="contact" class="game-box">
-    <h2>Contact</h2>
-    <p>Email me at: gamer@example.com</p>
-  </section>
+      // Random position
+      const x = Math.random() * (window.innerWidth - 60);
+      const y = Math.random() * (window.innerHeight - 60);
+      target.style.left = x + "px";
+      target.style.top = y + "px";
 
-  <footer>© 2026 My Gaming Website</footer>
+      // Add to game area
+      gameArea.appendChild(target);
+
+      // Click to shoot
+      target.addEventListener("click", () => {
+        score++;
+        scoreDisplay.textContent = "Score: " + score;
+        target.remove();
+      });
+
+      // Remove after 2 seconds if not clicked
+      setTimeout(() => {
+        if (gameArea.contains(target)) {
+          target.remove();
+        }
+      }, 2000);
+    }
+
+    // Spawn targets every second
+    setInterval(createTarget, 1000);
+  </script>
 </body>
 </html>
