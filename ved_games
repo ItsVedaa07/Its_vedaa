@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Gaming Website</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    header {
+      background: #222;
+      padding: 20px;
+      font-size: 2em;
+      color: #00ffcc;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #00ffcc;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .game-box {
+      margin: 30px auto;
+      padding: 20px;
+      background: #333;
+      border-radius: 10px;
+      width: 60%;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 10px;
+      background: #222;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>🎮 Welcome to My Gaming Hub 🎮</header>
+  <nav>
+    <a href="#games">Games</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="games" class="game-box">
+    <h2>Featured Game</h2>
+    <p>Play fun browser games here!</p>
+    <!-- Example: Embed a free game -->
+    <iframe src="https://games.crazygames.com/en_US/space-blaster/index.html" 
+            width="600" height="400" frameborder="0"></iframe>
+  </section>
+
+  <section id="about" class="game-box">
+    <h2>About</h2>
+    <p>This is my free gaming website where I share cool browser games.</p>
+  </section>
+
+  <section id="contact" class="game-box">
+    <h2>Contact</h2>
+    <p>Email me at: gamer@example.com</p>
+  </section>
+
+  <footer>© 2026 My Gaming Website</footer>
+</body>
+</html>
